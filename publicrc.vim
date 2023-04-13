@@ -41,4 +41,5 @@ nnoremap t :Files<CR>
 nnoremap r :Ag<CR>
 
 set rtp+=~/.vim/bundle/fzf/bin
-autocmd VimEnter * if line('$') == 1 && getline(1) == '' | execute 'e' fnameescape('~/master.todo') | call VimTodoListsInit() | endif
+
+autocmd VimEnter * if line('$') == 1 && getline(1) == '' | if !empty(glob('~/.master.todo.swp')) | view ~/master.todo | else | edit ~/master.todo | endif | call VimTodoListsInit() | endif
