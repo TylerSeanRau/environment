@@ -10,3 +10,5 @@ Simple install:
 
     git clone https://github.com/Harrian/vimrc.git ~/vimrc
     cp ~/vimrc/publicplugins.vim ~/.vim/.
+    vim +PluginInstall +qall
+    ~/.vim/bundle/fzf/install --no-update-rc --no-key-bindings --no-completion
