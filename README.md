@@ -13,6 +13,7 @@ This file comprises all my vim configuration settings that are not project or ma
 
     git clone https://github.com/Harrian/vimrc.git ~/vimrc
     cp ~/vimrc/publicplugins.vim ~/.vim/.
+    cp ~/vimrc/publicrc.vim ~/.vim/.
     vim +PluginInstall +qall
     ~/.vim/bundle/fzf/install --no-update-rc --no-key-bindings --no-completion
 
