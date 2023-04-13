@@ -14,14 +14,16 @@ This file serves as the example .vimrc file, my actual .vimrc file on my persona
 
 ## Simple install
 
-    mkdir -p ~/.vim
-    git clone https://github.com/Harrian/vimrc.git ~/vimrc
-    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-    cp ~/vimrc/publicplugins.vim ~/.vim/.
-    cp ~/vimrc/publicrc.vim ~/.vim/.
-    cp ~/vimrc/samplevimrc.vim ~/.vimrc
-    vim +PluginInstall +qall
-    ~/.vim/bundle/fzf/install --no-update-rc --no-key-bindings --no-completion
+```sh
+mkdir -p ~/.vim
+git clone https://github.com/Harrian/vimrc.git ~/vimrc
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+cp ~/vimrc/publicplugins.vim ~/.vim/.
+cp ~/vimrc/publicrc.vim ~/.vim/.
+cp ~/vimrc/samplevimrc.vim ~/.vimrc
+vim +PluginInstall +qall
+~/.vim/bundle/fzf/install --no-update-rc --no-key-bindings --no-completion
+```
 
 ## Troubleshooting
 
