@@ -15,7 +15,7 @@
 " different version somewhere else.
 " Plugin 'ascenator/L9', {'name': 'newL9'}
 
-Plugin 'Harrian/fzf'
+Plugin 'TylerSeanRau/fzf'
 " Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 Plugin 'vim-airline/vim-airline'

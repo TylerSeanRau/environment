@@ -1,5 +1,5 @@
-# vimrc
-This repository is my public vim configuration. In addition to my .vimrc file, my plugin configuration files are also listed here.
+# environment
+This repository is my public environment configurations.
 
 ## Files
 
@@ -16,11 +16,11 @@ This file serves as the example .vimrc file, my actual .vimrc file on my persona
 
 ```sh
 mkdir -p ~/.vim
-git clone https://github.com/Harrian/vimrc.git ~/vimrc
+git clone https://github.com/TylerSeanRau/environment.git ~/environment
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-cp ~/vimrc/publicplugins.vim ~/.vim/.
-cp ~/vimrc/publicrc.vim ~/.vim/.
-cp ~/vimrc/samplevimrc.vim ~/.vimrc
+cp ~/environment/publicplugins.vim ~/.vim/.
+cp ~/environment/publicrc.vim ~/.vim/.
+cp ~/environment/samplevimrc.vim ~/.vimrc
 vim +PluginInstall +qall
 ~/.vim/bundle/fzf/install --no-update-rc --no-key-bindings --no-completion
 ```
