@@ -9,13 +9,13 @@ This file comprises [Vundle](https://github.com/VundleVim/Vundle.vim) style conf
 #### publicrc.vim
 This file comprises all my vim configuration settings that are not project or machine specific and can be shared. This file is added to my vimrc via `runtime publicplugins.vim`.
 
-##Simple install
+## Simple install
 
     git clone https://github.com/Harrian/vimrc.git ~/vimrc
     cp ~/vimrc/publicplugins.vim ~/.vim/.
     vim +PluginInstall +qall
     ~/.vim/bundle/fzf/install --no-update-rc --no-key-bindings --no-completion
 
-##Troubleshooting
+## Troubleshooting
 
 Be sure that the `~/.vim/` directory is in your vim rtp, you can check by running `set rtp?`
