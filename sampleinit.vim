@@ -4,12 +4,16 @@ source ~/.vimrc
 
 call plug#begin()
 
-Plug 'neovim/nvim-lspconfig'
+Plug 'neovim/nvim-lspconfig', { 'tag': 'v0.1.4' }
 
 call plug#end()
 
 lua << EOF
-require('lspconfig').clangd.setup{
-  cmd = {"/path/to/clangd"}
-}
+local lsp_hookups = require('lsp_hookups')
+
+local lsp_windowing = require('lsp_windowing')
+
+vim.lsp.handlers['textDocument/definition'] = lsp_windowing.location_handler
+vim.lsp.handlers['textDocument/declaration'] = lsp_windowing.location_handler
+vim.lsp.handlers['textDocument/typeDefinition'] = lsp_windowing.location_handler
 EOF
