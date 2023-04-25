@@ -300,7 +300,7 @@ IV)  It is not allowed to remove this license from the distribution of the Vim
      with, at your option.
 --]]
 
-function M._str_byteindex_enc(line, index, encoding)
+local function str_byteindex_enc(line, index, encoding)
   if not encoding then encoding = 'utf-16' end
   if encoding == 'utf-8' then
     if index then return index else return #line end
@@ -396,7 +396,7 @@ local function get_line_byte_from_position(bufnr, position, offset_encoding)
   if col > 0 then
     local line = get_line(bufnr, position.line) or ''
     local ok, result
-    ok, result = pcall(_str_byteindex_enc, line, col, offset_encoding)
+    ok, result = pcall(str_byteindex_enc, line, col, offset_encoding)
     if ok then
       return result
     end
@@ -405,7 +405,7 @@ local function get_line_byte_from_position(bufnr, position, offset_encoding)
   return col
 end
 
-function M.jump_to_location(location, offset_encoding)
+local function jump_to_location(location, offset_encoding)
   -- location may be Location or LocationLink
   local uri = location.uri or location.targetUri
   if uri == nil then return end
@@ -422,12 +422,21 @@ function M.jump_to_location(location, offset_encoding)
   vim.fn.settagstack(vim.fn.win_getid(), {items=items}, 't')
 
   --- Jump to new location (adjusting for UTF-16 encoding of characters)
-  api.nvim_set_current_buf(bufnr)
-  api.nvim_buf_set_option(bufnr, 'buflisted', true)
+  if vim.api.nvim_win_get_number(vim.api.nvim_get_current_win()) < 2
+  then
+    vim.cmd('vsplit')
+  else
+    vim.cmd('split')
+  end
+
+  local win = vim.api.nvim_get_current_win()
+  local buf = vim.api.nvim_create_buf(true, true)
+  vim.api.nvim_set_current_buf(bufnr)
+  vim.api.nvim_buf_set_option(bufnr, 'buflisted', true)
   local range = location.range or location.targetSelectionRange
   local row = range.start.line
   local col = get_line_byte_from_position(bufnr, range.start, offset_encoding)
-  api.nvim_win_set_cursor(0, {row + 1, col})
+  vim.api.nvim_win_set_cursor(0, {row + 1, col})
   -- Open folds under the cursor
   vim.cmd("normal! zv")
   return true
@@ -457,3 +466,5 @@ local function location_handler(_, result, ctx, _)
     jump_to_location(result, client.offset_encoding)
   end
 end
+
+return {location_handler = location_handler}
