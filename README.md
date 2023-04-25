@@ -34,7 +34,7 @@ Some additional settings for neovim. These give detection of syntax errors while
 
 ## prepare:
 
-A lot of times you'll need to install neovim from source
+A lot of times you'll need to install neovim from source(v0.7.2 is prefered by me right now)
 
 ```sh
 git clone https://github.com/neovim/neovim
@@ -57,7 +57,10 @@ ninja
 ## neovim configuration
 ```sh
 mkdir -p ~/.config/nvim
-cp sampleinit.vim  ~/.config/nvim/init.vim
+cp ~/environment/sampleinit.vim ~/.config/nvim/init.vim
+mkdir -p ~/.config/nvim/lua
+cp ~/environment/lsp_hookups.lua ~/.config/nvim/lua/.
+cp ~/environment/lsp_windowing.lua ~/.config/nvim/lua/.
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 nvim +PlugInstall +qall
