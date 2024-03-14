@@ -1,6 +1,9 @@
 set rtp^=~/.vim rtp+=~/.vim/after
 let &packpath = &rtp
 source ~/.vimrc
+hi Normal guibg=NONE ctermbg=NONE
+hi EndOfBuffer guibg=NONE ctermbg=NONE
+set mouse=
 
 call plug#begin()
 
