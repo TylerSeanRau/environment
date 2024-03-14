@@ -34,12 +34,11 @@ Some additional settings for neovim. These give detection of syntax errors while
 
 ## prepare:
 
-A lot of times you'll need to install neovim from source(v0.7.2 is prefered by me right now)
+A lot of times you'll need to install neovim from source(v0.9.5 is prefered by me right now)
 
 ```sh
-git clone https://github.com/neovim/neovim
-git checkout A_RECENT_BRANCH
-make
+git clone --depth=1 --branch A_RECENT_BRANCH https://github.com/neovim/neovim.git
+make CMAKE_BUILD_TYPE=Release -j
 sudo make install
 ```
 
