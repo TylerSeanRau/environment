@@ -63,4 +63,5 @@ cp ~/environment/lsp_windowing.lua ~/.config/nvim/lua/.
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 nvim +PlugInstall +qall
+curl https://raw.githubusercontent.com/vim/colorschemes/master/legacy_colors/desert.vim -s -S --create-dirs -o ~/.config/nvim/colors/desert.vim
 ```
