@@ -8,7 +8,7 @@ set mouse=
 call plug#begin()
 
 Plug 'https://git.sr.ht/~whynothugo/lsp_lines.nvim'
-Plug 'neovim/nvim-lspconfig', { 'tag': 'v0.1.7' }
+Plug 'neovim/nvim-lspconfig'
 
 call plug#end()
 
