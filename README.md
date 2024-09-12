@@ -34,6 +34,39 @@ Some additional settings for neovim. These give detection of syntax errors while
 
 ## prepare:
 
+Usually installing from prebuilt is better.
+
+```sh
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
+sudo rm -rf /opt/nvim
+sudo tar -C /opt -xzf nvim-linux64.tar.gz
+```
+
+add dir to path
+```sh
+export PATH="$PATH:/opt/nvim-linux64/bin"
+```
+
+for clangd checkout: https://apt.llvm.org/
+
+
+## neovim configuration
+```sh
+mkdir -p ~/.config/nvim
+cp ~/environment/sampleinit.vim ~/.config/nvim/init.vim
+mkdir -p ~/.config/nvim/lua
+cp ~/environment/lsp_hookups.lua ~/.config/nvim/lua/.
+cp ~/environment/lsp_windowing.lua ~/.config/nvim/lua/.
+sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+nvim +PlugInstall +qall
+curl https://raw.githubusercontent.com/vim/colorschemes/master/legacy_colors/desert.vim -s -S --create-dirs -o ~/.config/nvim/colors/desert.vim
+```
+
+----
+
+## old building guide
+
 A lot of times you'll need to install neovim from source(v0.9.5 is prefered by me right now)
 
 ```sh
@@ -51,17 +84,4 @@ mkdir build
 cd build
 cmake -DLLVM_ENABLE_PROJECTS="clang;clang-tools-extra" -DCMAKE_BUILD_TYPE=Release -G Ninja ../llvm
 ninja
-```
-
-## neovim configuration
-```sh
-mkdir -p ~/.config/nvim
-cp ~/environment/sampleinit.vim ~/.config/nvim/init.vim
-mkdir -p ~/.config/nvim/lua
-cp ~/environment/lsp_hookups.lua ~/.config/nvim/lua/.
-cp ~/environment/lsp_windowing.lua ~/.config/nvim/lua/.
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-nvim +PlugInstall +qall
-curl https://raw.githubusercontent.com/vim/colorschemes/master/legacy_colors/desert.vim -s -S --create-dirs -o ~/.config/nvim/colors/desert.vim
 ```
